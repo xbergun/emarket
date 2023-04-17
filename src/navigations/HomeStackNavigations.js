@@ -6,7 +6,11 @@ const Stack = createNativeStackNavigator();
 
 const HomeStackNavigations = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                
+            }}
+        >
             {
                 HomeStackRoutes.map((route, index) => {
                     return (
