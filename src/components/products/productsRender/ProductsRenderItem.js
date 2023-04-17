@@ -1,11 +1,22 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { HOME_STACK_ROUTES } from '../../../navigations/constant';
 
 const ProductsRenderItem = ({ item }) => {
+  
+  const navigation = useNavigation();
+
+  const handleOnProductDetail = () => {
+    navigation.navigate(HOME_STACK_ROUTES.ProductDetail, { item });
+  };
+
   return (
     <Card containerStyle={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <TouchableOpacity onPress={handleOnProductDetail}>
+        <Image source={{ uri: item.image }} style={styles.image} />
+      </TouchableOpacity>
       <Text style={styles.price}>{item.price} ₺</Text>
       <Text style={styles.name}>{item.name}</Text>
       <Button
@@ -46,7 +57,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     marginBottom: 10,
-  
+
   },
   price: {
     fontSize: 14,

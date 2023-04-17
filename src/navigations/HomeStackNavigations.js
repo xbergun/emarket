@@ -1,5 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeStackRoutes } from '../routes/homeStackRoutes';
+import { getHomeStackScreenOptions } from './screenOptions/HomeStackScreenOptions';
+import CustomIcon from '../components/icon/CustomIcon';
 
 const Stack = createNativeStackNavigator();
 
@@ -7,9 +9,7 @@ const Stack = createNativeStackNavigator();
 const HomeStackNavigations = () => {
     return (
         <Stack.Navigator
-            screenOptions={{
-                
-            }}
+            screenOptions={({ route }) =>  getHomeStackScreenOptions(route)}
         >
             {
                 HomeStackRoutes.map((route, index) => {

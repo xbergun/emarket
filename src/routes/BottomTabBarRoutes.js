@@ -9,6 +9,9 @@ export const BottomTabBarRoutes = [
     {
         name: BOTTOM_TAB_BAR_ROUTES.HomeStack,
         component: HomeStackNavigations,
+        options : {
+            headerShown : false,
+        }
     },
     {
         name: BOTTOM_TAB_BAR_ROUTES.Basket,
