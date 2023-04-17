@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
+import { useSelector } from 'react-redux'
 const BasketCount = () => {
+  
+  const basket = useSelector((state) => state?.basket?.count);
 
-    const [count, setCount] = React.useState(0);
-
-  return count;
+  return basket ? basket : 0;
 }
 
 export default BasketCount
