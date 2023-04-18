@@ -1,31 +1,14 @@
 import React from "react";
 import { Icon } from "native-base";
-import {
-  MaterialIcons,
-  AntDesign,
-    FontAwesome,
-    Ionicons,
-    MaterialCommunityIcons,
-    Entypo,
-    Feather,
-    Fontisto,
-    Octicons,
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const CustomIcon = ({ 
-  size = "2xl", 
-  iconName, 
-  color, 
-  as = MaterialCommunityIcons 
+const CustomIcon = ({
+  size = "2xl",
+  iconName,
+  color,
+  as = MaterialCommunityIcons,
 }) => {
-  return (
-    <Icon
-      as={as}
-      size={size}
-      name={iconName}
-      color={color}
-    />
-  );
+  return <Icon as={as} size={size} name={iconName} color={color} />;
 };
 
 export default CustomIcon;
