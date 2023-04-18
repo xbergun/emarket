@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 const BasketCount = () => {
   
-  const basket = useSelector((state) => state?.basket?.count);
+  const products = useSelector((state) => state?.basket?.products);
 
-  return basket ? basket : 0;
+  return products ? products.length : 0;
 }
 
 export default BasketCount

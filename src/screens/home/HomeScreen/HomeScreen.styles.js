@@ -7,5 +7,6 @@ export default styles = StyleSheet.create({
     },
     searchContainer : {
         marginTop: 14,
+        marginBottom: 10,
     }
 });
