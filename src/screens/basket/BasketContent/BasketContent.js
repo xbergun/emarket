@@ -1,32 +1,50 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { HStack, VStack } from 'native-base'
-import BasketIncrementDecrement from '../../../components/basket/BasketIncrementDecrement'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useEffect } from "react";
+import { VStack, HStack } from "native-base";
+import { Button } from "react-native-elements";
+import { styles } from "./BasketContent.styles";
 
-const BasketContent = ({item}) => {
-    console.log(item)
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { store } from "../../../store/store";
+import { addProduct, removeProduct } from "../../../store/slices/BasketSlice";
+
+const BasketContent = ({ item }) => {
+
+  const decreaseQuantity = (id) => {
+    store.dispatch(removeProduct({ id, quantity: -1 }));
+  };
+
+  const increaseQuantity = (id) => {
+    store.dispatch(addProduct({ id, quantity: 1 }));
+  };
+
+  
+
   return (
-    <HStack style={{
-        backgroundColor: 'white',
-        padding: 10,
-        margin: 10,
-        borderRadius: 10,
-        justifyContent: 'space-between'
+    <View style={styles.container}>
+      <View style={styles.itemContainer} key={item.id}>
+        <View style={styles.leftContainer}>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.price}>{item.price} TL</Text>
+        </View>
+        <View style={styles.rightContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => decreaseQuantity(item.id)}
+          >
+            <Text style={styles.buttonText}>-</Text>
+          </TouchableOpacity>
+          <Text style={styles.quantity}>{item.quantity}</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => increaseQuantity(item.id)}
+          >
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+};
 
-    }}>
-      <VStack>
-        <Text>{item.name}</Text>
-        <Text>{item.price}</Text>
-      </VStack>
-      <HStack>
-        <BasketIncrementDecrement  />
-        <Text>{item.quantity}</Text>
-        <BasketIncrementDecrement increment={true} />
-      </HStack>
-    </HStack>
-  )
-}
-
-export default BasketContent
-
-const styles = StyleSheet.create({})
+export default BasketContent;
