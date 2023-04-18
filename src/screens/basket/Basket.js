@@ -1,30 +1,38 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { FlatList } from 'native-base'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { useSelector } from "react-redux";
+import { FlatList } from "native-base";
+import BasketContent from "./BasketContent/BasketContent";
 
 const Basket = () => {
+  const products = useSelector((state) => state?.basket?.products);
 
-  const products = useSelector(state => state?.basket?.products)
+  const handleRenderItem = ({ item }) => {
+    return <BasketContent item={item} />;
+  };
 
   return (
-    <View style={{
-      margin:15,
-      height: '100%',
-    }}>
-      {
-        products?.length > 0 ? (
-          products.map((product) => (
-            <Text key={product.id}>{product?.name} - {product?.quantity}</Text>
-          ))
-        ) : (
-          <Text>There are no products in your basket</Text>
-        )
-      }
+    <View style={styles.container}>
+      <FlatList
+        data={products}
+        renderItem={handleRenderItem}
+        keyExtractor={(item) => item.id}
+        ListEmptyComponent={
+          <Text style={styles.noProductsText}>No products in basket</Text>
+        }
+      />
     </View>
-  )
-}
+  );
+};
 
-export default Basket
+export default Basket;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    margin: 15,
+    height: "100%",
+  },
+  noProductsText: {
+    textAlign: "center",
+  },
+});

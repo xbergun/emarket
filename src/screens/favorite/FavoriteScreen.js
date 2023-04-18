@@ -1,24 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { FlatList } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { useSelector } from "react-redux";
+import { FlatList } from "react-native";
+import FavoriteContent from "./FavoriteContent/FavoriteContent";
 
 const FavoriteScreen = () => {
-  const products = useSelector((state) => state?.basket?.products);
+  const favorites = useSelector((state) => state.favorites);
+
+  const handleRenderItem = ({ item }) => {
+    return <FavoriteContent item={item} />;
+  };
+
   return (
-    <View>
-     {
-      products && 
-      <FlatList 
-        data={products}
-        renderItem={({item}) => <Text>{item.name}</Text>}
-        keyExtractor={item => item.id}
-      />
-     }
+    <View style={{flex:1}}>
+      {favorites.length ? (
+        <FlatList
+          data={favorites}
+          renderItem={handleRenderItem}
+          keyExtractor={(item) => item.id}
+        />
+      ) : (
+        <Text style={{
+          justifyContent: "center",
+      
+        }}>Empty</Text>
+      )}
     </View>
-  )
-}
+  );
+};
 
-export default FavoriteScreen
+export default FavoriteScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
