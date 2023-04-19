@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomIcon from "../icon/CustomIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../store/slices/FavoriteSlice";
@@ -18,6 +18,10 @@ const FavoriteButton = ({ item }) => {
       setIsFavorite(true);
     }
   };
+
+  useEffect(() => {
+    setIsFavorite(favorites.includes(item));
+  }, [favorites]);
 
   return (
     <TouchableOpacity onPress={handleFavorite} style={styles.container}>

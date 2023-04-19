@@ -17,17 +17,21 @@ const filterSlice = createSlice({
       state.sortBy = action.payload;
     },
     setBrands(state, action) {
-      state.brands = action.payload;
+      const brands = action.payload;
+
+      const newBrands = Object.keys(brands).filter((brand) => brands[brand]);
+
+      state.brands = newBrands;
     },
     setModels(state, action) {
-      state.models = action.payload;
+      const models = action.payload;
+
+      const newModels = Object.keys(models).filter((model) => models[model]);
+
+      state.models = newModels;
     },
   },
 });
 
-export const {
-    setSortBy,
-    setBrands,
-    setModels,
-} = filterSlice.actions;
+export const { setSortBy, setBrands, setModels } = filterSlice.actions;
 export default filterSlice.reducer;
