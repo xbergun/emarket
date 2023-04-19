@@ -3,6 +3,7 @@ import { HOME_STACK_ROUTES } from "../navigations/constant";
 import HomeScreen from "../screens/home/HomeScreen/HomeScreen";
 import ProductDetailScreen from "../screens/home/ProductDetail/ProductDetailScreen";
 import Header from '../components/header/Header';
+import FilterScreen from "../screens/filter/FilterScreen";
 
 
 export const HomeStackRoutes = [
@@ -21,5 +22,13 @@ export const HomeStackRoutes = [
             headerLeft : () => <Header isBack={true} />,
         }
     
+    },
+    {
+        name: HOME_STACK_ROUTES.Filter,
+        component: FilterScreen,
+        options: {
+            headerLeft : () => <Header isBack={true} />,
+            headerTitle : "Filter",
+        }
     },
 ];

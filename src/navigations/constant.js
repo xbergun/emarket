@@ -9,4 +9,5 @@ export const BOTTOM_TAB_BAR_ROUTES = {
 export const HOME_STACK_ROUTES = {
     Home: 'HomeScreen',
     ProductDetail: 'ProductDetailScreen',
+    Filter: 'FilterScreen',
 };

@@ -1,10 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Text } from "react-native";
 import React, { useEffect } from "react";
 import { VStack, HStack } from "native-base";
 import { Button } from "react-native-elements";
 import { styles } from "./ProductDetailScreen.styles";
 
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { store } from "../../../store/store";
 import { addProduct } from "../../../store/slices/BasketSlice";
 

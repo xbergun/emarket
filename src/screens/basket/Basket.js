@@ -16,7 +16,7 @@ const Basket = () => {
       <ScrollView>
         {products.length > 0 ? (
           products.map((item) => {
-            return <BasketContent item={item} />;
+            return <BasketContent key={item?.id} item={item} />;
           })
         ) : (
           <Text style={styles.empty}>Empty</Text>

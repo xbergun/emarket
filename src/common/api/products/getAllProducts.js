@@ -1,15 +1,19 @@
+import { useSelector } from "react-redux";
 import { getAllProductsDataFailure, getAllProductsDataRequest, getAllProductsDataSuccess } from "../../../store/slices/ProductsSlice"
 import { store } from "../../../store/store"
 import apiCall from '../apiCall';
 import { API_CONFİG } from "../apiConfig";
 
 
-const getAllProducts = async (page , perPage) => {
+const getAllProducts = async (page , perPage, sortByApi= {sortBy:"createdAt", order:"desc"}) => {
     store.dispatch(getAllProductsDataRequest());
 
     let { URL, METHOD } = API_CONFİG.PRODUCTS.GET_ALL_PRODUCTS;
 
-    URL = `/products?page=${page}&limit=${perPage}`;
+    let {sortBy, order} = sortByApi;
+
+    URL = `/products?page=${page}&limit=${perPage}&sortBy=${sortBy}&order=${order}`;
+
 
     try {
         const response = await apiCall(METHOD, URL);
