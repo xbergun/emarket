@@ -7,6 +7,7 @@ import { styles } from "./ProductDetailScreen.styles";
 import { useNavigation } from "@react-navigation/native";
 import { store } from "../../../store/store";
 import { addProduct } from "../../../store/slices/BasketSlice";
+import FavoriteButton from '../../../components/favorite/FavoriteButton';
 
 const ProductDetailScreen = ({ route }) => {
   const { item } = route.params;
@@ -34,6 +35,7 @@ const ProductDetailScreen = ({ route }) => {
         <Image source={{ uri: item.image }} style={styles.image} />
         <Text style={styles.title}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
+        <FavoriteButton item={item} />
       </VStack>
 
       <HStack style={styles.priceContainer}>

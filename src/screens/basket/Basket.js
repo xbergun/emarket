@@ -6,10 +6,15 @@ import BasketContent from "./BasketContent/BasketContent";
 import { Button } from "react-native-elements";
 import { styles } from "./Basket.styles";
 import { TotalPrice } from "../../helpers/TotalPrice";
+import { getItem } from "../../helpers/AsyncStorage";
 const Basket = () => {
   const products = useSelector((state) => state?.basket?.products);
 
   const totalPrice = TotalPrice(products);
+
+  const asyncStorageBasket = getItem("@basket");
+
+  console.log("asyncStorageBasket", asyncStorageBasket)
 
   return (
     <>

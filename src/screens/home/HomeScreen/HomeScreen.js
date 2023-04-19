@@ -12,27 +12,32 @@ import { useNavigation } from "@react-navigation/native";
 import { HOME_STACK_ROUTES } from "../../../navigations/constant";
 
 const HomeScreen = () => {
+  // useSelector's
   const { allProducts, getAllProductsDataApiStatus } = useSelector(
     (state) => state.products
   );
+  const { sortBy } = useSelector((state) => state.filter);
 
-  const {sortBy} = useSelector((state) => state.filter);
-
+  // useState's
   const [filterText, setFilterText] = useState("");
   const [page, setPage] = React.useState(1);
   const [perPage, setPerPage] = React.useState(12);
   const [data, setData] = React.useState();
-
+  
+  // Definations
   const navigation = useNavigation();
 
+
+  // useEffect's
   useEffect(() => {
-    getAllProducts(page, perPage, sortBy);
-  }, [sortBy]);
+    getAllProducts(page, perPage, sortBy, filterText);
+  }, [sortBy, filterText]);
 
   useEffect(() => {
     setData(allProducts);
   }, [allProducts]);
 
+  // Functions
   const handleRenderItem = ({ item }) => {
     return <ProductsRenderItem item={item} />;
   };
@@ -48,10 +53,12 @@ const HomeScreen = () => {
   };
 
   const handleGoToFilterScreen = () => {
-    navigation.navigate(HOME_STACK_ROUTES.Filter, {navigation});
+    navigation.navigate(HOME_STACK_ROUTES.Filter, { navigation });
   };
 
   return (
+   
+ 
     <View style={styles.container}>
       <View style={styles.searchContainer}>
         <ProductFilter onFilterChange={handleFilterChange} />
@@ -64,9 +71,9 @@ const HomeScreen = () => {
           marginHorizontal: 20,
           marginVertical: 14,
         }}
-       >
+      >
         <Text style={styles.filterText}>Filters:</Text>
-       
+
         <Button
           title="Select Filter"
           buttonStyle={styles.button}

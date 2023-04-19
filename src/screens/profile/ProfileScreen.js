@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import CheckBoxList from '../../components/checkbox/CheckBoxList'
 
 const ProfileScreen = () => {
   return (
     <View>
-      <Text>ProfileScreen</Text>
     </View>
   )
 }

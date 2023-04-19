@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Input, Icon, Stack } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 
-function ProductFilter({ onFilterChange }) {
+function ProductFilter({ onFilterChange, type }) {
   const [searchText, setSearchText] = useState('');
 
-  const handleFilterChange = () => {
-    onFilterChange(searchText);
+  const handleFilterChange = (text) => {
+    setSearchText(text);
+    onFilterChange(text);
   };
 
   const handleInputChange = (text) => {
@@ -21,7 +22,7 @@ function ProductFilter({ onFilterChange }) {
         InputLeftElement={
           <Icon
             as={<MaterialIcons name="search" />}
-            size={10}
+            size={type ==="filter" ? 5 : 10}
             ml="2"
             color="#2A59FE4D"
           />
