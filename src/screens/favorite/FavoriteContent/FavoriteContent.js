@@ -1,6 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+//React
 import React from "react";
+//React Native
+import { Image, Text, View } from "react-native";
+// styles
 import { styles } from "./FavoriteContent.styles";
+// components
 import FavoriteButton from "../../../components/favorite/FavoriteButton";
 
 const FavoriteContent = ({ item }) => {

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { setItem } from '../../helpers/AsyncStorage';
 
 const initialState = {
   products: [],
@@ -18,7 +17,6 @@ export const basketSlice = createSlice({
       } else {
         state.products.push({ id, name, price, quantity: 1 });
       }
-      setItem('@basket', JSON.stringify(state.products));
     },
     removeProduct: (state, action) => {
       const { id } = action.payload;

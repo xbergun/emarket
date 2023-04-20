@@ -1,15 +1,22 @@
-import { Text, View } from "react-native";
+//React
 import React, { useEffect, useState } from "react";
-import ProductFilter from "../../../components/search/SearchInput";
-import styles from "./HomeScreen.styles";
-import getAllProducts from "../../../common/api/products/getAllProducts";
+//React Native
+import { Text, View } from "react-native";
+//Redux
 import { useSelector } from "react-redux";
-import { API_STATUS } from "../../../common/apiStatus";
+//Library
 import { FlatList, HStack } from "native-base";
-import ProductsRenderItem from "../../../components/products/productsRender/ProductsRenderItem";
-import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { Button } from "react-native-elements";
+//styles
+import styles from "./HomeScreen.styles";
+//Navigation
 import { HOME_STACK_ROUTES } from "../../../navigations/constant";
+//api
+import getAllProducts from "../../../common/api/products/getAllProducts";
+//Components
+import ProductFilter from "../../../components/search/SearchInput";
+import ProductsRenderItem from "../../../components/products/productsRender/ProductsRenderItem";
 
 const HomeScreen = () => {
   // useSelector's
@@ -23,10 +30,9 @@ const HomeScreen = () => {
   const [page, setPage] = React.useState(1);
   const [perPage, setPerPage] = React.useState(12);
   const [data, setData] = React.useState();
-  
+
   // Definations
   const navigation = useNavigation();
-
 
   // useEffect's
   useEffect(() => {
@@ -57,8 +63,6 @@ const HomeScreen = () => {
   };
 
   return (
-   
- 
     <View style={styles.container}>
       <View style={styles.searchContainer}>
         <ProductFilter onFilterChange={handleFilterChange} />

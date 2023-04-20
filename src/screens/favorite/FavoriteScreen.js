@@ -1,12 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+//React
 import React from "react";
+//React Native
+import { StyleSheet, Text, View ,FlatList} from "react-native";
+//Redux
 import { useSelector } from "react-redux";
-import { FlatList } from "react-native";
+//Components
 import FavoriteContent from "./FavoriteContent/FavoriteContent";
 
 const FavoriteScreen = () => {
+  // useSelector's
   const favorites = useSelector((state) => state.favorites);
 
+  // functions
   const handleRenderItem = ({ item }) => {
     return <FavoriteContent item={item} />;
   };

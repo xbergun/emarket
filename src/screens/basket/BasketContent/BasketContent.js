@@ -1,15 +1,16 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect } from "react";
-import { VStack, HStack } from "native-base";
-import { Button } from "react-native-elements";
-import { styles } from "./BasketContent.styles";
-
-import { useNavigation, useRoute } from "@react-navigation/native";
+//React
+import React from "react";
+// React Native
+import { Text, TouchableOpacity, View } from "react-native";
+// Redux
 import { store } from "../../../store/store";
 import { addProduct, removeProduct } from "../../../store/slices/BasketSlice";
+// styles
+import { styles } from "./BasketContent.styles";
 
 const BasketContent = ({ item }) => {
-
+  
+  // Functions
   const decreaseQuantity = (id) => {
     store.dispatch(removeProduct({ id, quantity: -1 }));
   };

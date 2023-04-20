@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
+// React
 import React, { useState } from "react";
-import RadioButtonGroup from "../../components/radioButton/RadioButtonGroup";
-import { VStack } from "native-base";
-import { Divider } from "native-base";
+
+// React Native
+import { StyleSheet, Text, View } from "react-native";
+
+// Library
+import { VStack, Divider } from "native-base";
 import { Button } from "react-native-elements";
+
+// navigation
 import { useNavigation } from "@react-navigation/native";
+
+// components
 import CheckBoxList from "../../components/checkbox/CheckBoxList";
+import RadioButtonGroup from "../../components/radioButton/RadioButtonGroup";
 import ProductFilter from "../../components/search/SearchInput";
 
 const brandOptions = [
@@ -37,15 +45,17 @@ const modelOptions = [
   "14 Pro",
   "14 Pro Max",
 ];
-  
 
 const FilterScreen = () => {
+  //useState's
+  const [brandFilters, setBrandFilters] = useState(brandOptions);
+  const [modelFilters, setModelFilters] = useState([]);
+
+  // definations
   const navigation = useNavigation();
 
+  // functions
   const handleApplyFilter = () => navigation.goBack();
-
-  const [brandFilters, setBrandFilters] = useState(brandOptions);
-const [modelFilters, setModelFilters] = useState([]);
 
   const handleBrandFilter = (brand) => {
     if (brandFilters.includes(brand)) {

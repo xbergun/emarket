@@ -1,20 +1,31 @@
-import { StyleSheet, Text, View } from "react-native";
+// React
 import React from "react";
+
+// React Native
+import { Text } from "react-native";
+
+// Redux
 import { useSelector } from "react-redux";
-import { FlatList, HStack, ScrollView, VStack } from "native-base";
-import BasketContent from "./BasketContent/BasketContent";
+
+// Library
+import { HStack, ScrollView, VStack } from "native-base";
 import { Button } from "react-native-elements";
+
+// Style
 import { styles } from "./Basket.styles";
+
+//helpers
 import { TotalPrice } from "../../helpers/TotalPrice";
-import { getItem } from "../../helpers/AsyncStorage";
+
+// Components
+import BasketContent from "./BasketContent/BasketContent";
+
 const Basket = () => {
+  // useSelector's
   const products = useSelector((state) => state?.basket?.products);
 
+  // functions
   const totalPrice = TotalPrice(products);
-
-  const asyncStorageBasket = getItem("@basket");
-
-  console.log("asyncStorageBasket", asyncStorageBasket)
 
   return (
     <>
